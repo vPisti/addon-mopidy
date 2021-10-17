@@ -10,7 +10,7 @@ COPY requirements.txt /tmp/
 
 # Setup base
 RUN \
-    ARCH="${BUILD_ARCH}" \
+    && ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="armhf"; fi \
     \
