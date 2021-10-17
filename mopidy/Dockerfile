@@ -2,6 +2,8 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:4.2.2
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
+ARG BUILD_ARCH=amd64
+
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -14,8 +16,7 @@ RUN \
     && if [ "${BUILD_ARCH}" = "aarch64" ]; then ARCH="arm64"; fi \
     && if [ "${BUILD_ARCH}" = "armv7" ]; then ARCH="armhf"; fi \
     \
-    &&
-    apt-get update \
+    && apt-get update \
     \
     && apt-get install -y --no-install-recommends \
         dirmngr=2.2.12-1+deb10u1 \
